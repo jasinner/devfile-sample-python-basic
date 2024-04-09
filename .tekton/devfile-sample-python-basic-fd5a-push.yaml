@@ -29,6 +29,8 @@ spec:
     value: '{{revision}}'
   - name: hermetic
     value: "true"
+  -   name: prefetch-input
+      value: '{"type": "pip", "path": "."}'
   pipelineSpec:
     finally:
     - name: show-sbom
