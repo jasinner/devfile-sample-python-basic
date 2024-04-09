@@ -1,0 +1,21 @@
+FROM registry.access.redhat.com/ubi9/python-39:1-117.1684741281
+
+# Set the working directory in the container
+WORKDIR /projects
+
+USER 0
+ADD . .
+RUN chown -R 1001:0 ./
+USER 1001
+
+RUN pip install pip-tools
+
+RUN pip-compile pyproject.toml --generate-hashes
+
+RUN cat requirements.txt
+
+RUN ./pip_find_builddeps.py requirements.txt -o requirements-build.in
+
+RUN pip-compile requirements-build.in --allow-unsafe --generate-hashes
+
+RUN cat requirements-build.txt
