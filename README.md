@@ -12,6 +12,12 @@ Before you begin creating an application with this `devfile` code sample, it's h
 3. The `devfile.yaml` [`kubernetes-deploy` component](https://github.com/devfile-samples/devfile-sample-python-basic/blob/main/devfile.yaml#L31-L43) points to a `deploy.yaml` file that contains instructions for deploying the built container image.
 4. The `devfile.yaml` [`deploy` command](https://github.com/devfile-samples/devfile-sample-python-basic/blob/main/devfile.yaml#L51-L59) completes the [outerloop](https://devfile.io/docs/2.2.0/innerloop-vs-outerloop) deployment phase by pointing to the `image-build` and `kubernetes-deploy` components to create your application.
 
+# Customizations
+
+1. Enabled hermetic builds in ./.tekton/*.yaml
+2. Generating prefetch requirements.txt and requirements-build.txt files using Dockerfile-build
+3. Enabled prefetch-input in ./.tekton/*.yaml
+
 ### Additional resources
 * For more information about Python, see [Python](https://www.python.org/).
 * For more information about devfiles, see [Devfile.io](https://devfile.io/).
